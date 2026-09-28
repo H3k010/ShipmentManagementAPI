@@ -5,8 +5,8 @@
 [Oo]bj/
 
 **/appsettings.Development.json
-
 **/Properties/launchSettings.json
+**/ShipmentManagement.Api.http
 
 .vs/
 *.user
