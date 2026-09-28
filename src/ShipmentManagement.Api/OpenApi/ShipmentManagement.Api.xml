@@ -1,0 +1,381 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ShipmentManagement.Api</name>
+    </assembly>
+    <members>
+        <member name="T:ShipmentManagement.Api.Controllers.V1.AuthController">
+            <summary>
+            Controller for handling authentication-related operations such as registration, login, token refresh, and logout.
+            </summary>
+        </member>
+        <member name="M:ShipmentManagement.Api.Controllers.V1.AuthController.Register(ShipmentManagement.Application.DTOs.Auth.RegisterRequestDto)">
+            <summary>
+            Registers a new user with the provided registration details.
+            </summary>
+            <param name="requestDto">The registration request details</param>
+            <returns></returns>
+            <response code="201">User registered successfully</response>
+            <response code="400">Invalid registration request</response>
+        </member>
+        <member name="M:ShipmentManagement.Api.Controllers.V1.AuthController.Login(ShipmentManagement.Application.DTOs.Auth.LoginRequestDto)">
+            <summary>
+            Authenticates a user and returns a JWT token if the credentials are valid.
+            </summary>
+            <param name="requestDto">The login request details</param>
+            <returns>The JWT token if authentication is successful</returns>
+            <response code="200">Authentication successful, returns JWT token</response>
+            <response code="401">Authentication failed</response>
+            <response code="400">Invalid login request</response>
+        </member>
+        <member name="M:ShipmentManagement.Api.Controllers.V1.AuthController.Refresh(ShipmentManagement.Application.DTOs.Auth.RefreshRequestDto)">
+            <summary>
+            Refreshes the JWT token using a valid refresh token.
+            </summary>
+            <param name="requestDto">The refresh request details</param>
+            <returns>The new JWT token if the refresh is successful</returns>
+            <response code="200">Refresh successful, returns new JWT token</response>
+            <response code="401">Refresh failed</response>
+            <response code="400">Invalid refresh request</response>
+        </member>
+        <member name="M:ShipmentManagement.Api.Controllers.V1.AuthController.Logout(ShipmentManagement.Application.DTOs.Auth.LogoutRequestDto)">
+            <summary>
+            Logs out the current user.
+            </summary>
+            <param name="requestDto">The logout request details</param>
+            <returns></returns>
+            <response code="204">Logout successful</response>
+            <response code="400">Invalid logout request</response>
+        </member>
+        <member name="T:ShipmentManagement.Api.Controllers.V1.FacilitiesController">
+            <summary>
+            Controller for managing facilities in the shipment management system. Accessible only with administrative privileges.
+            </summary>
+        </member>
+        <member name="M:ShipmentManagement.Api.Controllers.V1.FacilitiesController.GetFacility(System.Int32)">
+            <summary>
+            Retrieves a facility by its unique identifier.
+            </summary>
+            <param name="id">The unique identifier of the facility to retrieve.</param>
+            <returns>The facility information or a not found response.</returns>
+            <response code="200">The facility information was successfully retrieved.</response>
+            <response code="404">The facility was not found.</response>
+        </member>
+        <member name="M:ShipmentManagement.Api.Controllers.V1.FacilitiesController.ListFacilities">
+            <summary>
+            Lists all facilities in the system.
+            </summary>
+            <returns>The list of facilities or a not found response.</returns>
+            <response code="200">Returns the list of facilities.</response>
+            <response code="404">If no facilities are found.</response>
+        </member>
+        <member name="M:ShipmentManagement.Api.Controllers.V1.FacilitiesController.AddFacility(ShipmentManagement.Application.DTOs.Facilities.CreateFacilityDto)">
+            <summary>
+            Adds a new facility to the system.
+            </summary>
+            <param name="facilityDto">The data for the new facility.</param>
+            <returns>The created facility information.</returns>
+            <response code="201">The facility was successfully created.</response>
+            <response code="400">If the provided facility data is invalid.</response>
+        </member>
+        <member name="M:ShipmentManagement.Api.Controllers.V1.FacilitiesController.UpdateFacility(System.Int32,ShipmentManagement.Application.DTOs.Facilities.UpdateFacilityDto)">
+            <summary>
+            Updates an existing facility in the system.
+            </summary>
+            <param name="id">The unique identifier of the facility to update.</param>
+            <param name="facilityDto">The updated facility data.</param>
+            <returns>A success or error response.</returns>
+            <response code="204">The facility was successfully updated.</response>
+            <response code="400">If the provided facility data is invalid.</response>
+            <response code="422">If the facility could not be updated due to business rules.</response>
+        </member>
+        <member name="M:ShipmentManagement.Api.Controllers.V1.FacilitiesController.ActivateFacility(System.Int32)">
+            <summary>
+            Activates a facility in the system.
+            </summary>
+            <param name="id">The unique identifier of the facility to activate.</param>
+            <returns>A success or error response.</returns>
+            <response code="204">The facility was successfully activated.</response>
+            <response code="422">If the facility could not be activated.</response>
+            <response code="404">If the facility is not found.</response>
+        </member>
+        <member name="M:ShipmentManagement.Api.Controllers.V1.FacilitiesController.DeactivateFacility(System.Int32)">
+            <summary>
+            Deactivates a facility in the system.
+            </summary>
+            <param name="id">The unique identifier of the facility to deactivate.</param>
+            <returns>A success or error response.</returns>
+            <response code="204">The facility was successfully deactivated.</response>
+            <response code="422">If the facility could not be deactivated due to business rules.</response>
+            <response code="404">If the facility is not found.</response>
+        </member>
+        <member name="T:ShipmentManagement.Api.Controllers.V1.PackageManagementController">
+            <summary>
+            Controller for managing packages and retrieving package details. Accessible only with administrative privileges.
+            </summary>
+        </member>
+        <member name="M:ShipmentManagement.Api.Controllers.V1.PackageManagementController.ListPackages">
+            <summary>
+            Lists all packages in the system.
+            </summary>
+            <returns>The list of packages or a not found response.</returns>
+            <response code="200">Returns the list of packages.</response>
+            <response code="404">If no packages are found.</response>
+        </member>
+        <member name="M:ShipmentManagement.Api.Controllers.V1.PackageManagementController.GetPackage(System.Int32)">
+            <summary>
+            Retrieves a specific package by its ID.
+            </summary>
+            <param name="id">The ID of the package to retrieve.</param>
+            <returns>The package information or a not found response.</returns>
+            <response code="200">The package information was successfully retrieved.</response>
+            <response code="404">The package was not found.</response>
+        </member>
+        <member name="M:ShipmentManagement.Api.Controllers.V1.PackageManagementController.TrackPackage(System.Int32)">
+            <summary>
+            Retrieves the tracking events for a specific package by its ID.
+            </summary>
+            <param name="id">The ID of the package for which to retrieve tracking events.</param>
+            <returns>The list of tracking events or a not found response.</returns>
+            <response code="200">The tracking events were successfully retrieved.</response>
+            <response code="404">The package was not found.</response>
+        </member>
+        <member name="M:ShipmentManagement.Api.Controllers.V1.PackageManagementController.RecordEvent(System.Int32,ShipmentManagement.Application.DTOs.TrackingEvents.CreateTrackingEventDto)">
+            <summary>
+            Records a new tracking event for a specific package.
+            </summary>
+            <param name="id">The ID of the package for which to record an event.</param>
+            <param name="dto">The details of the tracking event to record.</param>
+            <returns>The recorded tracking event or a bad request response.</returns>
+            <response code="200">The tracking event was successfully recorded.</response>
+            <response code="400">The provided data is invalid.</response>
+        </member>
+        <member name="M:ShipmentManagement.Api.Controllers.V1.PackageManagementController.ListDeliveryAttempts(System.Int32)">
+            <summary>
+            Lists all delivery attempts for a specific package by its ID.
+            </summary>
+            <param name="id">The ID of the package for which to list delivery attempts.</param>
+            <returns>The list of delivery attempts or a not found response.</returns>
+            <response code="200">The delivery attempts were successfully retrieved.</response>
+            <response code="404">The package was not found.</response>
+        </member>
+        <member name="T:ShipmentManagement.Api.Controllers.V1.PackagesController">
+            <summary>
+            Controller that Provides operations for managing packages.
+            </summary>
+        </member>
+        <member name="M:ShipmentManagement.Api.Controllers.V1.PackagesController.GetUserPackage(System.Int32)">
+            <summary>
+            Get a specific package by its ID.
+            </summary>
+            <param name="id">The ID of the package to retrieve.</param>
+            <returns>The requested package or a not found response.</returns>
+            <response code="200">The package was successfully retrieved.</response>
+            <response code="404">The package was not found.</response>
+        </member>
+        <member name="M:ShipmentManagement.Api.Controllers.V1.PackagesController.ListUserPackages">
+            <summary>
+            List all packages for the current user.
+            </summary>
+            <returns>A list of packages or a not found response.</returns>
+            <response code="200">The packages were successfully retrieved.</response>
+            <response code="404">No packages were found.</response>
+        </member>
+        <member name="M:ShipmentManagement.Api.Controllers.V1.PackagesController.CreatePackage(ShipmentManagement.Application.DTOs.Packages.CreatePackageV1Dto)">
+            <summary>
+            Create a new package.
+            </summary>
+            <param name="createV1Dto">The details for creating the package.</param>
+            <returns>The created package or a bad request response.</returns>
+            <response code="201">The package was successfully created.</response>
+            <response code="400">The package creation request was invalid.</response>
+        </member>
+        <member name="M:ShipmentManagement.Api.Controllers.V1.PackagesController.TrackPackage(System.Int32)">
+            <summary>
+            Track a package by its ID.
+            </summary>
+            <param name="id">The ID of the package to track.</param>
+            <returns>A list of tracking events or a not found response.</returns>
+            <response code="200">The tracking events were successfully retrieved.</response>
+            <response code="404">No tracking events were found for the package.</response>
+        </member>
+        <member name="M:ShipmentManagement.Api.Controllers.V1.PackagesController.CancelPackage(System.Int32)">
+            <summary>
+            Cancel a package by its ID.
+            </summary>
+            <param name="id">The ID of the package to cancel.</param>
+            <returns>A no content response or an unprocessable entity response.</returns>
+            <response code="204">The package was successfully canceled.</response>
+            <response code="422">The package could not be canceled.</response>
+        </member>
+        <member name="T:ShipmentManagement.Api.Controllers.V1.TrackingController">
+            <summary>
+            Controller for tracking packages and retrieving their events.
+            </summary>
+        </member>
+        <member name="M:ShipmentManagement.Api.Controllers.V1.TrackingController.GetPackage(System.String)">
+            <summary>
+            Get information about a package by its tracking number.
+            </summary>
+            <param name="trackingNumber">The tracking number of the package.</param>
+            <returns>The package information or a not found response.</returns>
+            <response code="200">The package information was successfully retrieved.</response>
+            <response code="400">The tracking number is invalid.</response>
+            <response code="404">The package was not found.</response>
+        </member>
+        <member name="M:ShipmentManagement.Api.Controllers.V1.TrackingController.GetPackageEvents(System.String)">
+            <summary>
+            Get the tracking events for a package by its tracking number.
+            </summary>
+            <param name="trackingNumber">The tracking number of the package.</param>
+            <returns>The list of tracking events or a not found response.</returns>
+            <response code="200">The tracking events were successfully retrieved.</response>
+            <response code="400">The tracking number is invalid.</response>
+            <response code="404">The package was not found.</response>
+        </member>
+        <member name="T:ShipmentManagement.Api.Controllers.V2.PackageManagementController">
+            <summary>
+            Controller for managing packages and their related operations in the Shipment Management system.
+            Accessible only with administrative privileges.
+            </summary>
+        </member>
+        <member name="M:ShipmentManagement.Api.Controllers.V2.PackageManagementController.ListPackages">
+            <summary>
+            Lists all packages in the system.
+            </summary>
+            <returns>The list of packages if found, otherwise a 404 Not Found response.</returns>
+            <response code="200">Returns the list of packages.</response>
+            <response code="404">If no packages are found.</response>
+        </member>
+        <member name="M:ShipmentManagement.Api.Controllers.V2.PackageManagementController.GetPackage(System.Int32)">
+            <summary>
+            Retrieves a specific package by its ID.
+            </summary>
+            <param name="id">The ID of the package to retrieve.</param>
+            <returns>The package if found, otherwise a 404 Not Found response.</returns>
+            <response code="200">Returns the package.</response>
+            <response code="404">If the package is not found.</response>
+        </member>
+        <member name="M:ShipmentManagement.Api.Controllers.V2.PackageManagementController.TrackPackage(System.Int32)">
+            <summary>
+            Retrieves the tracking events for a specific package by its ID.
+            </summary>
+            <param name="id">The ID of the package for which to retrieve tracking events.</param>
+            <returns>The list of tracking events if found, otherwise a 404 Not Found response.</returns>
+            <response code="200">Returns the list of tracking events.</response>
+            <response code="404">If no tracking events are found for the package.</response>
+        </member>
+        <member name="M:ShipmentManagement.Api.Controllers.V2.PackageManagementController.RecordEvent(System.Int32,ShipmentManagement.Application.DTOs.TrackingEvents.CreateTrackingEventDto)">
+            <summary>
+            Records a new tracking event for a specific package by its ID. Validates the input data and returns appropriate responses based on the outcome of the operation.
+            </summary>
+            <param name="id">The ID of the package for which to record a tracking event.</param>
+            <param name="dto">The data for the new tracking event.</param>
+            <returns>The created tracking event if successful, otherwise an error response.</returns>
+            <response code="200">Returns the created tracking event.</response>
+            <response code="400">If the input data is invalid.</response>
+        </member>
+        <member name="M:ShipmentManagement.Api.Controllers.V2.PackageManagementController.ListDeliveryAttempts(System.Int32)">
+            <summary>
+            Lists all delivery attempts for a specific package by its ID.
+            </summary>
+            <param name="id">The ID of the package for which to list delivery attempts.</param>
+            <returns>The list of delivery attempts if found, otherwise a 404 Not Found response.</returns>
+            <response code="200">Returns the list of delivery attempts.</response>
+            <response code="404">If no delivery attempts are found for the package.</response>
+        </member>
+        <member name="T:ShipmentManagement.Api.Controllers.V2.PackagesController">
+            <summary>
+            Controller that provides endpoints for managing packages in version 2 of the API.
+            </summary>
+        </member>
+        <member name="M:ShipmentManagement.Api.Controllers.V2.PackagesController.GetUserPackage(System.Int32)">
+            <summary>
+            Retrieves a specific package by its ID for the authenticated user.
+            </summary>
+            <param name="id">The ID of the package to retrieve.</param>
+            <returns>The package if found, otherwise a 404 Not Found response.</returns>
+            <response code="200">Returns the package details.</response>
+            <response code="404">If the package is not found.</response>
+        </member>
+        <member name="M:ShipmentManagement.Api.Controllers.V2.PackagesController.ListUserPackages">
+            <summary>
+            Retrieves a list of all packages for the authenticated user.
+            </summary>
+            <returns>The list of packages if found, otherwise a 404 Not Found response.</returns>
+            <response code="200">Returns the list of packages.</response>
+            <response code="404">If no packages are found.</response>
+        </member>
+        <member name="M:ShipmentManagement.Api.Controllers.V2.PackagesController.CreatePackage(ShipmentManagement.Application.DTOs.Packages.CreatePackageV2Dto)">
+            <summary>
+            Creates a new package for the authenticated user.
+            </summary>
+            <param name="createV2Dto">The data for creating the package.</param>
+            <returns>The created package if successful, otherwise a 400 Bad Request response.</returns>
+            <response code="201">Returns the created package details.</response>
+            <response code="400">If the request body contains invalid data.</response>
+        </member>
+        <member name="M:ShipmentManagement.Api.Controllers.V2.PackagesController.TrackPackage(System.Int32)">
+            <summary>
+            Retrieves the tracking events for a specific package by its ID for the authenticated user.
+            </summary>
+            <param name="id">The ID of the package to track.</param>
+            <returns>The list of tracking events if found, otherwise a 404 Not Found response.</returns>
+            <response code="200">Returns the list of tracking events.</response>
+            <response code="404">If the package is not found.</response>
+        </member>
+        <member name="M:ShipmentManagement.Api.Controllers.V2.PackagesController.CancelPackage(System.Int32)">
+            <summary>
+            Cancels a specific package by its ID for the authenticated user.
+            </summary>
+            <param name="id">The ID of the package to cancel.</param>
+            <returns>A 204 No Content response if successful, otherwise a 422 Unprocessable Entity response.</returns>
+            <response code="204">If the package is successfully canceled.</response>
+            <response code="422">If the package cannot be canceled.</response>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Type)">
+            <summary>
+            Generates a documentation comment ID for a type.
+            Example: T:Namespace.Outer+Inner`1 becomes T:Namespace.Outer.Inner`1
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Reflection.PropertyInfo)">
+            <summary>
+            Generates a documentation comment ID for a property.
+            Example: P:Namespace.ContainingType.PropertyName or for an indexer P:Namespace.ContainingType.Item(System.Int32)
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Type,System.String)">
+            <summary>
+            Generates a documentation comment ID for a property given its container type and property name.
+            Example: P:Namespace.ContainingType.PropertyName
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Reflection.MethodInfo)">
+            <summary>
+            Generates a documentation comment ID for a method (or constructor).
+            For example:
+              M:Namespace.ContainingType.MethodName(ParamType1,ParamType2)~ReturnType
+              M:Namespace.ContainingType.#ctor(ParamType)
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.GetTypeDocId(System.Type,System.Boolean,System.Boolean)">
+            <summary>
+            Generates a documentation ID string for a type.
+            This method handles nested types (replacing '+' with '.'),
+            generic types, arrays, pointers, by-ref types, and generic parameters.
+            The <paramref name="includeGenericArguments"/> flag controls whether
+            constructed generic type arguments are emitted, while <paramref name="omitGenericArity"/>
+            controls whether the generic arity marker (e.g. "`1") is appended.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.NormalizeDocId(System.String)">
+            <summary>
+            Normalizes a documentation comment ID to match the compiler-style format.
+            Strips the return type suffix for ordinary methods but retains it for conversion operators.
+            </summary>
+            <param name="docId">The documentation comment ID to normalize.</param>
+            <returns>The normalized documentation comment ID.</returns>
+        </member>
+    </members>
+</doc>
