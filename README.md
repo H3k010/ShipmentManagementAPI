@@ -21,7 +21,8 @@ Tracking events are recorded as a package moves through its delivery process. St
 These endpoints are intended for tracking shipments using a tracking number, without requiring access to a user's package management features.
 ```
 GET /api/v1/Tracking/{trackingNumber}
-GET /api/v1/Tracking/{trackingNumber}/events
+GET /api/v1/Tracking/PKG-6B892A3E
+GET /api/v1/Tracking/PKG-6B892A3E/events
 ```
 The first endpoint returns public package information, while the second returns the package's tracking history.
 
