@@ -1,6 +1,6 @@
 # Shipment Management API
 
-ShipmentManagement is a REST API for handling shipments from creation through delivery. It provides the core operations needed to manage packages, record their movement, and keep track of the facilities and delivery attempts involved along the way.
+Shipment Management is a REST API for handling shipments from creation through delivery. It provides the core operations needed to manage packages, record their movement, and keep track of the facilities and delivery attempts involved along the way.
 
 The API is versioned, allowing changes to be introduced in newer API versions while keeping existing clients supported. Authentication and authorization are handled through JWT bearer tokens, with access to operations depending on the user's role.
 
@@ -43,6 +43,7 @@ GET  /api/v2/Packages/{id}
 GET  /api/v2/Packages/{id}/tracking
 ```
 The package creation endpoints return the newly created package, while cancellation and tracking operations return the appropriate status or tracking information.
+
 Authentication endpoints are available for registration, login, token refresh, and logout.
 ```
 POST /api/v1/Auth/register
@@ -76,7 +77,6 @@ V2 includes the corresponding administrative package endpoints, including tracki
 POST /api/v2/admin/packages/{id}/events
 GET  /api/v2/admin/packages/{id}/delivery-attempts
 ```
-Administrative package and facility operations require administrative privileges.
 
 ## Validation
 
@@ -92,10 +92,8 @@ The API uses MySQL for persistent data storage, with Entity Framework Core handl
 
 Serilog is used for application logging, with logs written to the console and stored in MySQL. Logging is used to record important application events such as package operations, status changes, validation failures, missing resources, and unexpected exceptions.
 
-The application uses structured logging so that useful information such as package IDs, tracking numbers, and statuses can be searched and analyzed without logging entire domain objects or sensitive data.
-
 ## API Documentation
 
-Swagger UI is included for development and API testing. It provides an interactive view of the available V1 and V2 endpoints, their request and response models, authentication requirements, and possible responses.
+The API provides OpenAPI documentation and Swagger UI with separate documentation for V1 and V2. Swagger UI is intended only for development and testing. It provides an interactive view of the available V1 and V2 endpoints, their request and response models, authentication requirements, and possible responses.
 
-Swagger UI is intended as a development and testing tool and is not exposed publicly in the hosted production API.
+The project also generates XML documentation from the API's controller and action comments, which is used to improve the generated API documentation.
