@@ -1,6 +1,6 @@
 # Shipment Management API
 
-Shipment Management is a REST API for handling shipments from creation through delivery. It provides the core operations needed to manage packages, record their movement, and keep track of the facilities and delivery attempts involved along the way.
+Shipment Management is a REST API for handling shipments from creation through delivery. It is built with ASP.NET Core API, Entity Framework Core, MySQL and follows Clean Architecture. It provides the core operations needed to manage packages, record their movement, and keep track of the facilities and delivery attempts involved along the way.
 
 The API is versioned, allowing changes to be introduced in newer API versions while keeping existing clients supported. Authentication and authorization are handled through JWT bearer tokens, with access to operations depending on the user's role.
 
