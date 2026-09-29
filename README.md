@@ -16,11 +16,13 @@ Packages represent the shipments being managed by the system. A package contains
 
 Tracking events are recorded as a package moves through its delivery process. Status transitions are validated before they are applied, and delivery attempts are recorded when applicable. Public tracking endpoints also allow shipment progress and tracking history to be retrieved using a package's tracking number.
 
-### Shipments Tracking
+### Public Tracking
 
 These endpoints are intended for tracking shipments using a tracking number, without requiring access to a user's package management features.
 ```
 GET /api/v1/Tracking/{trackingNumber}
+```
+```
 GET /api/v1/Tracking/PKG-6B892A3E
 GET /api/v1/Tracking/PKG-6B892A3E/events
 ```
